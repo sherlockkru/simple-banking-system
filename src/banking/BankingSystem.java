@@ -19,8 +19,7 @@ public class BankingSystem {
         Random random = new Random();
         int accountNumber = random.nextInt(1000000000);
         int pinCode = random.nextInt(10000);
-        int checkSum = random.nextInt(10);
-        CreditCard card = new CreditCard(accountNumber, pinCode, checkSum);
+        CreditCard card = new CreditCard(accountNumber, pinCode);
         System.out.println("");
         System.out.println("Your card has been created");
         System.out.println("");
@@ -53,4 +52,5 @@ public class BankingSystem {
     public void showUserBalance(){
         System.out.println("Balance: " + userSession.getBalance());
     }
+
 }
