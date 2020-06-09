@@ -9,10 +9,12 @@ public class BankingSystem {
     private List<CreditCard> creditCardList;
     private Scanner scanner;
     private CreditCard userSession;
+    private Database cardDatabase;
 
-    public BankingSystem(Scanner scanner) {
+    public BankingSystem(Scanner scanner, Database cardDatabase) {
         this.creditCardList = new ArrayList<>();
         this.scanner = scanner;
+        this.cardDatabase = cardDatabase;
     }
 
     public void createAccount() {
@@ -28,6 +30,7 @@ public class BankingSystem {
         System.out.println("Your card PIN:");
         System.out.printf("%04d", card.getPin());
         creditCardList.add(card);
+        cardDatabase.insertCardToDatabase(card.getCardNumber(), card.getPin());
     }
 
     public boolean logInUser() {
@@ -45,12 +48,13 @@ public class BankingSystem {
         return accessToUserMenu;
     }
 
-    public void logOutUser(){
+    public void logOutUser() {
         userSession = null;
     }
 
-    public void showUserBalance(){
+    public void showUserBalance() {
         System.out.println("Balance: " + userSession.getBalance());
     }
+
 
 }
