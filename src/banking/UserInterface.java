@@ -23,7 +23,7 @@ public class UserInterface {
                 case 2:
                     if (bankingSystem.logInUser() == true) {
                         System.out.println("");
-                        System.out.println("You have successfully logged out!");
+                        System.out.println("You have successfully logged in!");
                         this.showUserMenu();
                     } else {
                         System.out.println("Wrong card number or PIN!");
@@ -50,15 +50,32 @@ public class UserInterface {
         while (!logOut) {
             System.out.println("");
             System.out.println("1. Balance");
-            System.out.println("2. Log out");
+            System.out.println("2. Add income");
+            System.out.println("3. Do transfer");
+            System.out.println("4. Close account");
+            System.out.println("5. Log out");
             System.out.println("0. Exit");
             int command = Integer.valueOf(scanner.nextLine());
 
-            switch (command){
+            switch (command) {
                 case 1:
                     bankingSystem.showUserBalance();
                     break;
                 case 2:
+                    System.out.println("Enter income:");
+                    int income = Integer.valueOf(scanner.nextLine());
+                    bankingSystem.addIncome(income);
+                    break;
+                case 3:
+                    System.out.println("Transfer");
+                    bankingSystem.doTransfer();
+                    break;
+                case 4:
+                    bankingSystem.closeAccount();
+                    bankingSystem.logOutUser();
+                    logOut = true;
+                    break;
+                case 5:
                     logOut = true;
                     bankingSystem.logOutUser();
                     break;

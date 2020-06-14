@@ -16,6 +16,12 @@ public class CreditCard {
         this.pin = pin;
     }
 
+    public CreditCard (String cardNumber, int pin, int balance){
+        this.cardNumber = cardNumber;
+        this.pin = pin;
+        this.balance = balance;
+    }
+
     public String getCardNumber() {
         return cardNumber;
     }
@@ -26,6 +32,10 @@ public class CreditCard {
 
     public int getBalance() {
         return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 
     private String accountNumberToString(int accountNumber) {
@@ -55,4 +65,5 @@ public class CreditCard {
             return 10 - (sum % 10);
         }
     }
+
 }
